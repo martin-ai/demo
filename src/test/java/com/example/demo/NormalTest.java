@@ -4,6 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.springframework.util.StopWatch;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class NormalTest {
@@ -12,16 +15,18 @@ public class NormalTest {
     //测试冒泡排序
     public void testBorderSorted() {
 //        int[] ints = new int[]{4, 3, 2, 1, 5, 6, 7, 8};
-        int[] ints = IntStream.range(0, 100).sequential().toArray();
+        List<Integer> list = IntStream.range(0, 50).boxed().collect(Collectors.toList());
+        Collections.shuffle(list);//费雪耶兹（Fisher–Yates） 也被称作高纳德（ Knuth）随机置乱算法
+        int[] ints = list.stream().mapToInt(x -> x).toArray();
         System.out.println(String.format("原始值:%s", JSONObject.toJSONString(ints)));
         StopWatch watch = new StopWatch("test border sort");
         watch.start("before improvement");
         System.out.println("before improvement");
-        borderSortedBeforeImprovement(ints);
+        borderSortedBeforeImprovement(ints.clone());
         watch.stop();
         watch.start("after improvement");
         System.out.println("after improvement");
-        borderSortedAfterImprovement(ints);
+        borderSortedAfterImprovement(ints.clone());
         watch.stop();
         System.out.println(watch.prettyPrint());
     }
