@@ -2,17 +2,31 @@ package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
+import org.springframework.util.StopWatch;
+
+import java.util.stream.IntStream;
 
 public class NormalTest {
 
     @Test
-    public void test() {
-        int[] ints = new int[]{4, 3, 2, 1, 5, 6, 7, 8};
+    //测试冒泡排序
+    public void testBorderSorted() {
+//        int[] ints = new int[]{4, 3, 2, 1, 5, 6, 7, 8};
+        int[] ints = IntStream.range(0, 100).sequential().toArray();
         System.out.println(String.format("原始值:%s", JSONObject.toJSONString(ints)));
-        borderSorted(ints);
+        StopWatch watch = new StopWatch("test border sort");
+        watch.start("before improvement");
+        System.out.println("before improvement");
+        borderSortedBeforeImprovement(ints);
+        watch.stop();
+        watch.start("after improvement");
+        System.out.println("after improvement");
+        borderSortedAfterImprovement(ints);
+        watch.stop();
+        System.out.println(watch.prettyPrint());
     }
 
-    private void borderSorted2(int[] ints) {
+    private void borderSortedBeforeImprovement(int[] ints) {
         int count = 1; //计数器
         int temp; //临时值
         for (int j = 0; j < ints.length; j++) {
@@ -29,7 +43,7 @@ public class NormalTest {
         }
     }
 
-    private void borderSorted(int[] ints) {
+    private void borderSortedAfterImprovement(int[] ints) {
         int count = 1; //计数器
         int temp; //临时值
         boolean sortedFlag;  //有序标记
