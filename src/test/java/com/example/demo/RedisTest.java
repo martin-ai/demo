@@ -13,7 +13,7 @@ public class RedisTest extends AiDemoApplicationTests {
 
     @Test
     public void testGet() {
-        Map s = cacheService.getStr();
+        Map s = cacheService.getStr("s");
         System.out.println(JSONObject.toJSONString(s));
     }
 
@@ -24,7 +24,8 @@ public class RedisTest extends AiDemoApplicationTests {
 
     @Test
     public void testUpdate() {
-        cacheService.updateStr();
+        Map s = cacheService.updateStr("s");
+        System.out.println(JSONObject.toJSONString(s));
     }
 
 }

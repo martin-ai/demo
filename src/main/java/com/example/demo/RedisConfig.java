@@ -3,7 +3,6 @@ package com.example.demo;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -11,10 +10,12 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisPassword;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
@@ -34,14 +35,27 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean
     public RedisConnectionFactory factory() {
-        JedisConnectionFactory factory = new JedisConnectionFactory();
-        factory.setPort(port);
-        factory.setHostName(host);
-        factory.setDatabase(database);
-        if (StringUtils.isNotBlank(password)) {
-            factory.setPassword(password);
-        }
-        return factory;
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(host, port);
+        configuration.setDatabase(database);
+        configuration.setPassword(RedisPassword.of(password));
+        return new JedisConnectionFactory(configuration);
+    }
+
+    //    @Bean
+//    public CacheManager cacheManager(RedisConnectionFactory factory) {
+////        return RedisCacheManager.builder(factory).cacheDefaults(defaultCacheConfig()).withInitialCacheConfigurations(Maps.newHashMap()).transactionAware().build();
+//        return RedisCacheManager.create(factory);
+//    }
+//
+    @Bean
+    public RedisTemplate redisTemplate(RedisConnectionFactory factory, RedisSerializer jackson2JsonRedisSerializer) {
+        //创建一个模板类
+        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+        //将刚才的redis连接工厂设置到模板类中
+        template.setConnectionFactory(factory);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(jackson2JsonRedisSerializer);
+        return template;
     }
 
     @Bean
@@ -55,34 +69,24 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer() {
-        return new GenericJackson2JsonRedisSerializer();
-    }
-
-
-    @Bean
-    public RedisTemplate redisTemplate(RedisConnectionFactory factory) {
-        //创建一个模板类
-        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
-        //将刚才的redis连接工厂设置到模板类中
-        template.setConnectionFactory(factory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(genericJackson2JsonRedisSerializer());
-        return template;
-    }
-
-    @Bean
     @Override
     public KeyGenerator keyGenerator() {
         return (target, method, objects) -> {
             StringBuilder sb = new StringBuilder();
             sb.append(target.getClass().getName());
-            sb.append("::" + method.getName() + ":");
+            sb.append("." + method.getName());
             for (Object obj : objects) {
                 sb.append(obj.toString());
             }
             return sb.toString();
         };
     }
+//
+//    private RedisCacheConfiguration defaultCacheConfig() {
+//        RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+//                .entryTtl(Duration.ofSeconds(1))
+//                .disableCachingNullValues();
+//        return cacheConfiguration;
+//    }
 
 }
