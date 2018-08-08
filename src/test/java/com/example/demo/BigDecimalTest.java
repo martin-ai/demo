@@ -139,7 +139,7 @@ public class BigDecimalTest {
      * }
      * <p>
      * 总结：
-     * 1.BigDecimal构造方法double会丢失精度 不建议用 用String或long代替
+     * 1.BigDecimal构造方法double会丢失精度 不建议用 用BigDecimal.valueOf(double val)代替
      * 2.BigDecimal.valueOf()不会丢失精度 但是当传入值为float时 转double会丢失精度 故不建议传float
      * 3.BigDecimal.valueOf(double val) 等价与 new BigDecimal(String str)
      **/
@@ -147,6 +147,7 @@ public class BigDecimalTest {
     public void test3() {
         System.out.println(new BigDecimal("0.03"));         //public BigDecimal(String val) //0.03
         System.out.println(new BigDecimal(3L));             //public BigDecimal(long val)   //3
+        System.out.println(new BigDecimal(3d));             //public BigDecimal(double val) //3
         //BigDecimal(double val)会丢失精度
         System.out.println(new BigDecimal(0.03d));          //public BigDecimal(double val) //0.0299999999999999988897769753748434595763683319091796875
         System.out.println(new BigDecimal(0.03f));          //public BigDecimal(double val) //0.02999999932944774627685546875
@@ -155,6 +156,8 @@ public class BigDecimalTest {
         System.out.println(BigDecimal.valueOf(0.03d));      //public static BigDecimal valueOf(double val) //0.03
         //float -> double丢失精度
         System.out.println(BigDecimal.valueOf(0.03f));      //public static BigDecimal valueOf(double val) //0.029999999329447746
+
+        System.out.println(new BigDecimal(3d));
 
     }
 
