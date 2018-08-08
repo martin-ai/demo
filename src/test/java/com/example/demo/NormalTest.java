@@ -1,6 +1,10 @@
 package com.example.demo;
 
+import com.google.common.collect.Lists;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;
+
+import java.util.List;
 
 public class NormalTest {
 
@@ -43,6 +47,17 @@ public class NormalTest {
     private void callByReference2(StringBuffer c) {
         c.append("new");
         System.out.println(String.format("引用调用调用：参数c 修改值=%s", c));
+    }
+
+    @Test
+    public void testApacheCollectionUtils() {
+        List<String> stringList1 = Lists.newArrayList("1", "2");
+        List<String> stringList2 = Lists.newArrayList("1", "3");
+        List<String> stringList3 = Lists.newArrayList("1");
+        System.out.println(CollectionUtils.containsAny(stringList1, stringList2));
+        System.out.println(CollectionUtils.containsAny(stringList1, stringList3));
+        System.out.println(CollectionUtils.containsAll(stringList1, stringList2));
+        System.out.println(CollectionUtils.containsAll(stringList1, stringList3));
     }
 
 }

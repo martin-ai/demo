@@ -61,10 +61,15 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
         <!--<dependency>-->
-            <!--<groupId>com.google.collections</groupId>-->
-            <!--<artifactId>google-collections</artifactId>-->
-            <!--<version>1.0</version>-->
+        <!--<groupId>com.google.collections</groupId>-->
+        <!--<artifactId>google-collections</artifactId>-->
+        <!--<version>1.0</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.google.guava</groupId>
