@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.redis.CacheService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

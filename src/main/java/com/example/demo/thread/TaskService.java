@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.thread;
 
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;

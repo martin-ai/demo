@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.thread;
 
 import org.springframework.util.CollectionUtils;
 

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Ai;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

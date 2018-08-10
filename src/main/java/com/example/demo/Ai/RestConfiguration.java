@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Ai;
 
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
