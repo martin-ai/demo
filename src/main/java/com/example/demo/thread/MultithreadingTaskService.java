@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 @Service
-public class TaskService {
+public class MultithreadingTaskService {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 

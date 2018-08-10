@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.thread.TaskService;
+import com.example.demo.thread.MultithreadingTaskService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class TaskTest extends AiDemoApplicationTests {
 
     @Autowired
-    private TaskService taskService;
+    private MultithreadingTaskService taskService;
 
     @Test
     public void test1() {
