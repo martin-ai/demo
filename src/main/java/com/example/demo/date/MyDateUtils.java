@@ -1,4 +1,4 @@
-package com.example.demo.Date;
+package com.example.demo.date;
 
 import org.springframework.stereotype.Component;
 
