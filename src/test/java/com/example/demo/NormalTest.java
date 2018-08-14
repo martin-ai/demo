@@ -1,10 +1,16 @@
 package com.example.demo;
 
+import com.example.demo.Date.MyDateUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
+import org.springframework.util.StopWatch;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class NormalTest {
 
@@ -58,6 +64,31 @@ public class NormalTest {
         System.out.println(CollectionUtils.containsAny(stringList1, stringList3));
         System.out.println(CollectionUtils.containsAll(stringList1, stringList2));
         System.out.println(CollectionUtils.containsAll(stringList1, stringList3));
+    }
+
+    @Test
+    public void testDateUtils() {
+        int max = 1000000;
+        Date date = new Date();
+        String dateStr = DateFormatUtils.format(date, "yyyyMM");
+//        IntStream.rangeClosed(-12, 12).forEach(num -> {
+//            int s = DataUtils.addMonth(Integer.valueOf(dateStr), num);
+//            System.out.printf("%d--%d\n", num, s);
+//        });
+
+        StopWatch stopWatch = new StopWatch("test calc date");
+        stopWatch.start("date add month");
+        IntStream.rangeClosed(-max, max).forEach(num -> {
+            DateUtils.addMonths(date, num);
+        });
+        stopWatch.stop();
+        stopWatch.start("int add month");
+        IntStream.rangeClosed(-max, max).forEach(num -> {
+            int dateInt = Integer.valueOf(dateStr);
+            MyDateUtils.addMonth(dateInt, num);
+        });
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
     }
 
 }
