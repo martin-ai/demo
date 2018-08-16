@@ -13,9 +13,9 @@ public class TestAsync extends AiDemoApplicationTests {
     public void test1() throws InterruptedException {
         System.out.println("开始执行Controller任务");
         long start = System.currentTimeMillis();
-        task.doTaskOne();
-        task.doTaskTwo();
-        task.doTaskThree();
+        task.d1();
+        task.d2();
+        task.d3();
         long end = System.currentTimeMillis();
         System.out.println("完成Controller任务，耗时：" + (end - start) + "毫秒");
         Thread.sleep(10 * 1000);

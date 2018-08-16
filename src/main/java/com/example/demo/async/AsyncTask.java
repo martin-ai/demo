@@ -10,6 +10,30 @@ public class AsyncTask {
 
     public static Random random = new Random();
 
+    public void d1() {
+        try {
+            this.doTaskOne();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void d2() {
+        try {
+            this.doTaskTwo();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void d3() {
+        try {
+            this.doTaskThree();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Async
     public void doTaskOne() throws InterruptedException {
         System.out.println("开始执行任务一");
