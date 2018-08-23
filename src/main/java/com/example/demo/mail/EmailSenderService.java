@@ -46,12 +46,6 @@ public class EmailSenderService {
             helper.setTo(to);
             helper.setSubject(subject); //主题
             helper.setText(html, true); //正文
-
-            //附件
-//            FileSystemResource file = new FileSystemResource(new File("weixin.jpg"));
-//            helper.addAttachment("附件-1.jpg", file);
-//            helper.addAttachment("附件-2.jpg", file);
-
             javaMailSender.send(msg);
         } catch (MessagingException e) {
             logger.error("Send " + html + " error", e);
@@ -59,7 +53,6 @@ public class EmailSenderService {
     }
 
     public void send(String to, String subject, String html, File file) throws Exception {
-
         MimeMessage msg = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(msg, true, "UTF-8");
         try {
@@ -74,11 +67,9 @@ public class EmailSenderService {
         } catch (MessagingException e) {
             logger.error("Send " + html + " error", e);
         }
-
     }
 
     public void send(String to, String subject, String html, DataSource attachment, String fileName) throws Exception {
-
         MimeMessage msg = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(msg, true, "UTF-8");
         try {
@@ -87,6 +78,10 @@ public class EmailSenderService {
             helper.setSubject(subject);
             helper.setText(html, true);
             if (attachment != null) {
+                //附件
+//            FileSystemResource file = new FileSystemResource(new File("weixin.jpg"));
+//            helper.addAttachment("附件-1.jpg", file);
+//            helper.addAttachment("附件-2.jpg", file);
                 helper.addAttachment(fileName, attachment);
             }
             javaMailSender.send(msg);
