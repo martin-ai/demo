@@ -139,4 +139,18 @@ public class NormalTest {
         System.out.printf("%d-%s\n", e.ordinal(), e.name());
     }
 
+    @Test
+    public void testLambda() {
+//Error:(146, 13) java: local variables referenced from a lambda expression must be final or effectively final
+//        int count = 1;
+//        IntStream.rangeClosed(0, 10).forEach(x -> {
+//            count++;
+//        });
+        final int[] count = {0};
+        IntStream.range(0, 10).forEach(x -> {
+            count[0]++;
+        });
+        System.out.println(count[0]);
+    }
+
 }
