@@ -16,29 +16,11 @@ public class AppConfig {
     public static final String ENV_LOCAL = "local";
     public static final String ENV_LIVE = "live";
 
-    private String restPath;
-    private String ftpPath;
     private String env;
     private Integer tmpFileExpiredDays;
     private Map<String, List<String>> typeStockSuggestionRel;
     private boolean extractCallouts;
     private String legendCodeSepChar;
-
-    public String getRestPath() {
-        return restPath;
-    }
-
-    public void setRestPath(String restPath) {
-        this.restPath = restPath;
-    }
-
-    public String getFtpPath() {
-        return ftpPath;
-    }
-
-    public void setFtpPath(String ftpPath) {
-        this.ftpPath = ftpPath;
-    }
 
     public Integer getTmpFileExpiredDays() {
         return tmpFileExpiredDays;
