@@ -77,17 +77,20 @@ public class NormalTest {
 //        });
 
         StopWatch stopWatch = new StopWatch("test calc date");
-        stopWatch.start("date add month");
-        IntStream.rangeClosed(-max, max).forEach(num -> {
-            DateUtils.addMonths(date, num);
-        });
-        stopWatch.stop();
+
         stopWatch.start("int add month");
         IntStream.rangeClosed(-max, max).forEach(num -> {
             int dateInt = Integer.valueOf(dateStr);
             MyDateUtils.addMonth(dateInt, num);
         });
         stopWatch.stop();
+
+        stopWatch.start("date add month");
+        IntStream.rangeClosed(-max, max).forEach(num -> {
+            DateUtils.addMonths(date, num);
+        });
+        stopWatch.stop();
+
         System.out.println(stopWatch.prettyPrint());
     }
 
