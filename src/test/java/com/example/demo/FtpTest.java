@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.linuxFTP.FileHelper;
+import com.example.demo.windowsFTP.FtpUtils;
 import org.junit.Test;
 
 /**
@@ -13,5 +14,12 @@ public class FtpTest extends AiDemoApplicationTests {
         String[] strings = FileHelper.getPathNames("ftp://10.0.0.158/test/aa");
         System.out.println(strings.length);
     }
+
+    @Test
+    public void test2() throws Exception {
+        boolean strings = FtpUtils.login();
+        System.out.println(strings);
+    }
+
 
 }
