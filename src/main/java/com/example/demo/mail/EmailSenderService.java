@@ -18,7 +18,7 @@ import java.io.File;
  * 所以在引入了spring-boot-starter-mail依赖之后，
  * 会根据配置文件中的内容去创建JavaMailSender实例，
  * 因此我们可以直接在需要使用的地方直接@Autowired来引入邮件发送对象。
- *
+ * <p>
  * http://blog.didispace.com/springbootmailsender/
  **/
 @Service
@@ -74,7 +74,9 @@ public class EmailSenderService {
         MimeMessageHelper helper = new MimeMessageHelper(msg, true, "UTF-8");
         try {
             helper.setFrom("SPAR<" + mailUsername + ">");
-            helper.setTo(to);
+            helper.setTo(new String[]{to});                             //收件人
+            helper.setCc(new String[]{"抄送1", "抄送2", "抄送3"});      //抄送人
+            helper.setBcc(new String[]{"密送1", "密送2", "密送3"});     //密送人
             helper.setSubject(subject);
             helper.setText(html, true);
             if (attachment != null) {
