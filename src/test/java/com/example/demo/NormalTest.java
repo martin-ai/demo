@@ -11,6 +11,7 @@ import org.springframework.util.StopWatch;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class NormalTest {
@@ -190,6 +191,24 @@ public class NormalTest {
         System.out.println(StringUtils.contains(str3, ".") && StringUtils.contains(str3, "_"));
         System.out.println(StringUtils.contains(str4, ".") && StringUtils.contains(str4, "_"));
 
+    }
+
+    @Test
+    public void testString() {
+        String s = String.join(",", IntStream.range(0, 4).mapToObj(x -> "?").collect(Collectors.toList()));
+        System.out.println(s);
+    }
+
+    @Test
+    public void testPage() {
+        long totalRecord = 25;
+        long pageSize = 10;
+        long totalPage = totalRecord / pageSize;
+
+        for (long pageNum = 0; pageNum <= totalPage; pageNum++) {
+            System.out.println(String.format("start page : %d", pageNum * pageSize));
+            System.out.println(String.format("end page : %d", (pageNum + 1) * pageSize - 1));
+        }
     }
 
 }
