@@ -1,0 +1,17 @@
+${AnsiBackground.BLACK}
+${AnsiBackground.BRIGHT_RED}
+${AnsiBackground.BRIGHT_RED}${AnsiColor.BRIGHT_WHITE}                              ███████╗██████╗ ██╗    ██╗    ██╗ █████╗ ██████╗ ███╗   ██╗██╗███╗   ██╗ ██████╗
+${AnsiBackground.BRIGHT_RED}${AnsiColor.BRIGHT_WHITE}                              ██╔════╝██╔══██╗██║    ██║    ██║██╔══██╗██╔══██╗████╗  ██║██║████╗  ██║██╔════╝
+${AnsiBackground.BRIGHT_RED}${AnsiColor.BRIGHT_WHITE}                              █████╗  ██████╔╝██║    ██║ █╗ ██║███████║██████╔╝██╔██╗ ██║██║██╔██╗ ██║██║  ███╗
+${AnsiBackground.BRIGHT_RED}${AnsiColor.BRIGHT_WHITE}                              ██╔══╝  ██╔══██╗██║    ██║███╗██║██╔══██║██╔══██╗██║╚██╗██║██║██║╚██╗██║██║   ██║
+${AnsiBackground.BRIGHT_RED}${AnsiColor.BRIGHT_WHITE}                              ██║     ██████╔╝██║    ╚███╔███╔╝██║  ██║██║  ██║██║ ╚████║██║██║ ╚████║╚██████╔╝
+${AnsiBackground.BRIGHT_RED}${AnsiColor.BRIGHT_WHITE}                              ╚═╝     ╚═════╝ ╚═╝     ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝
+${AnsiBackground.BLACK}
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                   Federal law provides severe civil and criminal penalties for
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                   the unauthorized reproduction,distribution,or exhibition of
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                                  copyrighted motion prictures
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                       (Title 17, United States Code, Sections 501 and 508).
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                    The federal bureau of Investigation investigate allegations of
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                                   criminal copyright infringement.
+${AnsiBackground.BLACK}${AnsiColor.BRIGHT_WHITE}                                           (Title 17, United States Code, Section 506).
