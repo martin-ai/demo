@@ -16,7 +16,7 @@
 *.iml
 *.ipr
 *.properties
-/resources/Banner.txt
+src/main/resources/Banner.txt
 
 ### NetBeans ###
 /nbproject/private/
