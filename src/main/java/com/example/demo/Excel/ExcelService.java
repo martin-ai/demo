@@ -16,11 +16,11 @@ public class ExcelService {
     private static final String EXCEL_XLS = "xls";
     private static final String EXCEL_XLSX = "xlsx";
 
-    public void readExcel(String excelFileName) throws Exception {
+    public Workbook readExcel(String excelFileName) throws Exception {
         File excelFile = new File(excelFileName);
         checkExcelValid(excelFile);
         FileInputStream in = new FileInputStream(excelFile);
-        getWorkbook(in, excelFile);
+        return getWorkbook(in, excelFile);
     }
 
     private Workbook getWorkbook(InputStream in, File file) throws IOException {
