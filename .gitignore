@@ -16,6 +16,7 @@
 *.iml
 *.ipr
 *.properties
+*.xls
 /src/main/resources/Banner.txt
 
 ### NetBeans ###
