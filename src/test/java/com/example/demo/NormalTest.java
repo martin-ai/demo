@@ -1,7 +1,10 @@
 package com.example.demo;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,6 +16,7 @@ public class NormalTest {
     //2.实参：传递给被调用方法的值，预先创建并赋予确定值。
     //3.传值调用：传值调用中传递的参数为基本数据类型，参数视为形参。
     //4.引用调用：传引用调用中，如果传递的参数是引用数据类型，参数视为实参。在调用的过程中，将实参的地址传递给了形参，形参上的改变都发生在实参上。
+    //5.传递都是单向的，形参不能传递回实参
     public void testCall() {
         System.out.println("总结1：java的基本数据类型是传值调用，对象引用类型是引用调用。");
         int a = 100;
@@ -67,6 +71,25 @@ public class NormalTest {
             t.foo(builder);
             System.out.println(builder.toString());
         }
+    }
+
+    @Test
+    public void testList() {
+        List<String> testList = Lists.newArrayList("1", "2");
+        callByList(testList);
+        System.out.println(JSONObject.toJSONString(testList));
+    }
+
+    private void callByList(List<String> list) {
+        List<String> listCopy = list;
+        //实参的地址传递给了形参
+        System.out.println("Old Address:" + System.identityHashCode(list));
+        list = Lists.newArrayList(); //改变了形参指向的地址
+        System.out.println("New Address:" + System.identityHashCode(list));
+        list.clear();//传递是单向的，形参不能传递回实参，所以在新地址上发生的一切与原来的无关
+        list.add("3");
+        //listCopy 指向原地址 在listCopy上发生的一切 就会发生在原来的对象上
+        listCopy.add("4");
     }
 
     @Test
