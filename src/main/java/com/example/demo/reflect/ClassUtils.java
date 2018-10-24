@@ -7,6 +7,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,11 +17,23 @@ public class ClassUtils {
     /**
      * 获取成员函数的信息
      */
+    public static void getClassMethodMessage(Object obj) {
+        Class c = obj.getClass();
+        getClassMethodMessage(c, null);
+    }
+
+    public static void getClassMethodMessage(Class c) {
+        getClassMethodMessage(c, null);
+    }
+
     public static void getClassMethodMessage(Object obj, ReturnTypeEnum returnTypeEnum) {
         Class c = obj.getClass();
+        getClassMethodMessage(c, returnTypeEnum);
+    }
+
+    public static void getClassMethodMessage(Class c, ReturnTypeEnum returnTypeEnum) {
         //获取类的名称
         System.out.println(String.format("当前类:%s", c.getName()));
-
         /**
          *
          * Method类，方法对象
@@ -28,11 +41,10 @@ public class ClassUtils {
          *getDeclaredMethods是获取该类自己的声明的方法
          */
         Method[] ms = c.getMethods();
-        List<Method> methodList = Lists.newArrayList(ms);
+        List<Method> methodList = Lists.newArrayList(ms).stream().sorted(Comparator.comparing(x -> x.getReturnType().getSimpleName())).collect(Collectors.toList());
         if (returnTypeEnum != null) {
             methodList = methodList.stream().filter(x -> StringUtils.upperCase(x.getReturnType().getSimpleName()).startsWith(returnTypeEnum.name())).collect(Collectors.toList());
         }
-
         for (Method m : methodList) {
             //得到方法的返回值类型的类类型
             Class returnType = m.getReturnType();

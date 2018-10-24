@@ -3,6 +3,9 @@ package com.example.demo;
 import com.example.demo.reflect.ClassUtils;
 import com.example.demo.reflect.ReflectService;
 import com.example.demo.reflect.ReturnTypeEnum;
+import javafx.scene.input.DataFormat;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,7 +33,7 @@ public class ReflectTest extends AiDemoApplicationTests {
         String s = "hello";
 //        ClassUtils.getFieldMessage(s);
 //        ClassUtils.printConMessage(s);
-        ClassUtils.getClassMethodMessage(s, ReturnTypeEnum.BOOLEAN);
+        ClassUtils.getClassMethodMessage(DateFormatUtils.class);
     }
 
 }
