@@ -1,18 +1,25 @@
 package com.example.demo.reflect;
 
+import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
+
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClassUtils {
 
     /**
      * 获取成员函数的信息
      */
-    public static void getClassMethodMessage(Object obj) {
+    public static void getClassMethodMessage(Object obj, ReturnTypeEnum returnTypeEnum) {
         Class c = obj.getClass();
         //获取类的名称
-        //System.out.println(c.getName());
+        System.out.println(String.format("当前类:%s", c.getName()));
 
         /**
          *
@@ -21,16 +28,26 @@ public class ClassUtils {
          *getDeclaredMethods是获取该类自己的声明的方法
          */
         Method[] ms = c.getMethods();
-        for (int i = 0; i < ms.length; i++) {
+        List<Method> methodList = Lists.newArrayList(ms);
+        if (returnTypeEnum != null) {
+            methodList = methodList.stream().filter(x -> StringUtils.upperCase(x.getReturnType().getSimpleName()).startsWith(returnTypeEnum.name())).collect(Collectors.toList());
+        }
+
+        for (Method m : methodList) {
             //得到方法的返回值类型的类类型
-            Class returnType = ms[i].getReturnType();
-            System.out.print(returnType.getName() + " ");
+            Class returnType = m.getReturnType();
+            System.out.print(String.format("返回类型：%s ", returnType.getSimpleName()));
             //得到方法的名称
-            System.out.print(ms[i].getName() + "(");
+            System.out.print(String.format("方法：%s(", m.getName()));
             //获取参数类型
-            Class[] paramTypes = ms[i].getParameterTypes();
-            for (Class class1 : paramTypes) {
-                System.out.print(class1.getName() + ",");
+            Class[] paramTypes = m.getParameterTypes();
+            Iterator<Class> classIterable = Lists.newArrayList(paramTypes).iterator();
+            while (classIterable.hasNext()) {
+                Class cc = classIterable.next();
+                System.out.print(cc.getSimpleName());
+                if (classIterable.hasNext()) {
+                    System.out.print(",");
+                }
             }
             System.out.println(")");
         }

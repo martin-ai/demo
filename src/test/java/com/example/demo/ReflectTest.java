@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.reflect.ClassUtils;
 import com.example.demo.reflect.ReflectService;
+import com.example.demo.reflect.ReturnTypeEnum;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,12 +24,13 @@ public class ReflectTest extends AiDemoApplicationTests {
         reflectService.acquireInstance("Woman");
     }
 
+    //测试工具类
     @Test
     public void test3() {
         String s = "hello";
-        ClassUtils.getFieldMessage(s);
-        ClassUtils.printConMessage(s);
-        ClassUtils.getClassMethodMessage(s);
+//        ClassUtils.getFieldMessage(s);
+//        ClassUtils.printConMessage(s);
+        ClassUtils.getClassMethodMessage(s, ReturnTypeEnum.BOOLEAN);
     }
 
 }
