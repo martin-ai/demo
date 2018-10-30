@@ -17,11 +17,7 @@ public class PythonTest extends AiDemoApplicationTests {
 
     @Test
     public void test2() {
-        String projectPath = System.getProperty("user.dir");
-        String pythonName = "\\resources\\python\\test.py";
-        String pythonPath = String.join("\\", projectPath, pythonName);
-        System.out.println(pythonPath);
-        pythonService.filePython(pythonPath);
+        pythonService.filePython();
     }
 
 }
