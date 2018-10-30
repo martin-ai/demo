@@ -18,7 +18,7 @@ public class FileConfig {
     }
 
     public String getPythonPath(String fileName) {
-        return String.join("//", getPythonPath(), fileName);
+        return String.join("\\", getPythonPath(), fileName);
     }
 
 }

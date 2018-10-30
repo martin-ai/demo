@@ -20,4 +20,9 @@ public class PythonTest extends AiDemoApplicationTests {
         pythonService.filePython();
     }
 
+    @Test
+    public void test3() {
+        pythonService.CmdFilePython();
+    }
+
 }
