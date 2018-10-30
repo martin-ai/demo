@@ -25,26 +25,20 @@ public class PythonService {
         interpreter.exec(Py.newStringUTF8("print('阿斯房价送到·')"));//Py.newStringUTF8解决乱码问题
     }
 
-    //文件式 执行Python
+    //文件式 执行Python 不可使用第三方库 ImportError: No module named numpy
     public void filePython() {
-        String pythonPath = String.join("\\", System.getProperty("user.dir"), fileConfig.getPythonPath("test.py"));
         PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.execfile(pythonPath);
+        interpreter.execfile(getPythonFilePath("test.py"));
         PyFunction pyFunction = interpreter.get("add", PyFunction.class);
         PyObject pyObject = pyFunction.__call__(new PyInteger(15), new PyInteger(12));
         System.out.println(pyObject);
     }
 
-    //文件式 执行Python 使用CMD命令
+    //文件式 执行Python 使用CMD命令 需搭有python环境 可以使用第三方库
     public void CmdFilePython() {
         try {
-            System.out.println(System.getProperty("user.dir"));
-            String pythonPath = String.join("\\", System.getProperty("user.dir"), fileConfig.getPythonPath("test.py"));
-            System.out.println(pythonPath);
-            String[] args = new String[]{CMD_PYTHON, pythonPath, String.valueOf(1), String.valueOf(2)};
-
+            String[] args = new String[]{CMD_PYTHON, getPythonFilePath("test.py"), String.valueOf(1), String.valueOf(2)};
             Process proc = Runtime.getRuntime().exec(args);
-
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line = null;
             while ((line = in.readLine()) != null) {
@@ -53,8 +47,13 @@ public class PythonService {
             in.close();
             proc.waitFor();
         } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private String getPythonFilePath(String fileName) {
+        return String.join("\\", System.getProperty("user.dir"), fileConfig.getPythonPath(fileName));
     }
 
 }
