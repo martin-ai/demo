@@ -1,20 +1,22 @@
 package com.example.demo.Ai;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
+//DNN语言模型
 public class DnnlmCnBean {
 
     @Id
     private String logId;
-    private String text;
+    private String text;        //文本内容（GBK编码），最大512字节，不需要切词
     private List<DnnlmCnBeanItem> items;
+    private BigDecimal ppl;     //描述句子通顺的值：数值越低，句子越通顺
     @CreatedDate
     @LastModifiedDate
     Instant timestamp;
@@ -61,4 +63,13 @@ public class DnnlmCnBean {
     public void setVersion(Long version) {
         this.version = version;
     }
+
+    public BigDecimal getPpl() {
+        return ppl;
+    }
+
+    public void setPpl(BigDecimal ppl) {
+        this.ppl = ppl;
+    }
+
 }

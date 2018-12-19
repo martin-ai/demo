@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class DnnlmCnBeanItem {
 
-    private BigDecimal prob;
-    private String word;
+    private BigDecimal prob;    //句子的切词结果
+    private String word;        //该词在句子中的概率值,取值范围[0,1]
 
     public BigDecimal getProb() {
         return prob;
