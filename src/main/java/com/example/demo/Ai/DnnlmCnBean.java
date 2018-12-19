@@ -12,7 +12,6 @@ import java.util.List;
 public class DnnlmCnBean {
 
     @Id
-    @JSONField(name = "log_id")
     private String logId;
     private String text;
     private List<DnnlmCnBeanItem> items;
