@@ -113,6 +113,12 @@ public class NormalTest {
     }
 
     @Test
+    public void testStringRegex() {
+        String txt = "w12".toUpperCase();
+        System.out.println(txt.matches("^W\\d$"));
+    }
+
+    @Test
     public void testPage() {
         long totalRecord = 25;
         long pageSize = 10;
