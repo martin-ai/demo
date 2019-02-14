@@ -1,8 +1,8 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.forecast.DateQty;
-import com.example.demo.forecast.ForecastCommonService;
+import com.example.demo.Forecast.DateQty;
+import com.example.demo.Forecast.ForecastCommonService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

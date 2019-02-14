@@ -1,4 +1,4 @@
-package com.example.demo.Excel;
+package com.example.demo.Tools;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -21,19 +21,19 @@ import java.util.Date;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
 
 @Service
-public class ExcelService {
+public class ExcelUtils {
 
     private static final String EXCEL_XLS = "xls";
     private static final String EXCEL_XLSX = "xlsx";
 
-    public Workbook readExcel(String excelFileName) throws Exception {
+    public static Workbook readExcel(String excelFileName) throws Exception {
         File excelFile = new File(excelFileName);
         checkExcelValid(excelFile);
         FileInputStream in = new FileInputStream(excelFile);
         return getWorkbook(in, excelFile);
     }
 
-    private Workbook getWorkbook(InputStream in, File file) throws IOException {
+    private static Workbook getWorkbook(InputStream in, File file) throws IOException {
         Workbook wb = null;
         if (file.getName().endsWith(EXCEL_XLS)) {  //Excel 2003
             wb = new HSSFWorkbook(in);
@@ -43,7 +43,7 @@ public class ExcelService {
         return wb;
     }
 
-    private void checkExcelValid(File file) throws Exception {
+    private static void checkExcelValid(File file) throws Exception {
         if (!file.exists()) {
             throw new Exception("文件不存在");
         }
@@ -52,7 +52,7 @@ public class ExcelService {
         }
     }
 
-    public String getCellValue(Cell cell) {
+    public static String getCellValue(Cell cell) {
         if (cell == null) {
             return null;
         }

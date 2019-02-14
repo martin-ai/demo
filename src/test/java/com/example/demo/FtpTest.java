@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.linuxFTP.FileHelper;
-import com.example.demo.windowsFTP.FtpUtils;
+import com.example.demo.FTP.Linux.FileHelper;
+import com.example.demo.FTP.Windows.FtpUtils;
 import org.junit.Test;
 
 /**

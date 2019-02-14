@@ -1,4 +1,4 @@
-package com.example.demo.linuxFTP;
+package com.example.demo.FTP.Linux;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

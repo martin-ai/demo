@@ -1,4 +1,4 @@
-package com.example.demo.linuxFTP;
+package com.example.demo.FTP.Linux;
 
 import java.io.*;
 import java.nio.channels.FileChannel;

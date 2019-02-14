@@ -1,4 +1,4 @@
-package com.example.demo.linuxFTP;
+package com.example.demo.FTP.Linux;
 
 import org.apache.commons.vfs2.*;
 import org.apache.commons.vfs2.provider.UriParser;

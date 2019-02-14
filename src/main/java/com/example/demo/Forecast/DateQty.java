@@ -1,4 +1,4 @@
-package com.example.demo.forecast;
+package com.example.demo.Forecast;
 
 import java.math.BigDecimal;
 

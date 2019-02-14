@@ -1,4 +1,4 @@
-package com.example.demo.mail;
+package com.example.demo.Mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

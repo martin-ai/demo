@@ -1,4 +1,4 @@
-package com.example.demo.linuxFTP;
+package com.example.demo.FTP.Linux;
 
 
 public abstract class FileManager {

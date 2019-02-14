@@ -1,4 +1,4 @@
-package com.example.demo.windowsFTP;
+package com.example.demo.FTP.Windows;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;

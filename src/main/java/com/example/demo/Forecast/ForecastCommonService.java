@@ -1,4 +1,4 @@
-package com.example.demo.forecast;
+package com.example.demo.Forecast;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.example.demo.date.MyDateUtils.addMonth;
+import static com.example.demo.Tools.MyDateUtils.addMonth;
 
 @Service
 public class ForecastCommonService {

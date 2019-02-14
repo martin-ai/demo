@@ -3,7 +3,6 @@ package com.example.demo.Ai;
 import com.alibaba.fastjson.JSON;
 import com.baidu.aip.nlp.AipNlp;
 import com.baidu.aip.nlp.ESimnetType;
-import com.example.demo.exception.ApiException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Optional;
 
 @Service
 public class AiSimpleService {
