@@ -17,10 +17,8 @@ public class ExcelTest extends AiDemoApplicationTests {
         Sheet sheet = wb.getSheetAt(0);
         Row row = sheet.getRow(0);
         for (Cell cell : row) {
-            cell.getCellTypeEnum();
-            cell.setCellType(CellType.STRING);
-            RichTextString s = cell.getRichStringCellValue();
-            System.out.println(s.getString());
+            String value = excelService.getCellValue(cell);
+            System.out.println(value);
         }
         System.out.println(wb);
     }
