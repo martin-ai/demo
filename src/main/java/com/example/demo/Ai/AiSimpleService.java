@@ -23,11 +23,17 @@ public class AiSimpleService {
     @Autowired
     private KeywordRepository keywordRepository;
 
+    //词法分析接口向用户提供分词、词性标注、专名识别三大功能；能够识别出文本串中的基本词汇（分词），对这些词汇进行重组、标注组合后词汇的词性，并进一步识别出命名实体。
+    public void lexer(String text/*最大512字节*/) {
+        JSONObject res = aipNlpClient.lexer(text, null);
+        System.out.println(res.toString(2));
+    }
+
     //中文DNN语言模型接口用于输出切词结果并给出每个词在句子中的概率值,判断一句话是否符合语言表达习惯。
     public void dnnlmCn(String text/*最大512字节*/) {
         JSONObject res = aipNlpClient.dnnlmCn(text, null);
         System.out.println(res.toString(2));
-        dnnlmCnRepository.save(JSON.parseObject(res.toString(), DnnlmCn.class));
+//        dnnlmCnRepository.save(JSON.parseObject(res.toString(), DnnlmCn.class));
     }
 
     //输入两个词，得到两个词的相似度结果。
