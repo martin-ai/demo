@@ -130,4 +130,10 @@ public class NormalTest {
         }
     }
 
+    @Test
+    public void testStream() {
+        List<String> stringList = Lists.newArrayList("01", "01", "02", "03");
+        System.out.println(stringList.stream().max(String::compareTo).orElse(null));
+    }
+
 }
