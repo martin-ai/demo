@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.Tools.MyStringUtils;
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.List;
@@ -134,6 +136,16 @@ public class NormalTest {
     public void testStream() {
         List<String> stringList = Lists.newArrayList("01", "01", "02", "03");
         System.out.println(stringList.stream().max(String::compareTo).orElse(null));
+    }
+
+    @Test
+    public void testStringUtils() {
+        String strHis = "01,02";
+        String strN1 = "03";
+        String strN2 = "02";
+        System.out.println(MyStringUtils.append(strHis, strN1));
+        System.out.println(MyStringUtils.append(strHis, strN2));
+        System.out.println(MyStringUtils.merge(strN1, strN2));
     }
 
 }
