@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.Arithmetic.SoundexArithmetic;
 import com.example.demo.Tools.MyStringUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
@@ -148,4 +149,14 @@ public class NormalTest {
         System.out.println(MyStringUtils.merge(strN1, strN2));
     }
 
+    @Test
+    public void testArithmetic() {
+        System.out.println(SoundexArithmetic.calc("XS"));
+    }
+
+    @Test
+    public void test() {
+        String s = "131313";
+        System.out.println(StringUtils.replaceAll(s, "[:digit:]{3}", ""));
+    }
 }
