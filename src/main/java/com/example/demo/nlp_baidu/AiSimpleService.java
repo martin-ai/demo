@@ -1,4 +1,4 @@
-package com.example.demo.baidunlp;
+package com.example.demo.nlp_baidu;
 
 import com.alibaba.fastjson.JSON;
 import com.baidu.aip.nlp.AipNlp;
@@ -66,6 +66,15 @@ public class AiSimpleService {
     //文章标签服务能够针对网络各类媒体文章进行快速的内容理解，根据输入含有标题的文章，输出多个内容标签以及对应的置信度，用于个性化推荐、相似文章聚合、文本内容分析等场景。
     public void keyword(String title/*最大80字节*/, String content/*最大65535字节*/) {
         JSONObject res = aipNlpClient.keyword(title, content, null);
+        checkResponseParam(res);
+        System.out.println(res.toString(2));
+    }
+
+    public void wordEmbedding(String content/*最大64字节*/) {
+        // 传入可选参数调用接口
+        HashMap<String, Object> options = new HashMap<String, Object>();
+        // 词向量表示
+        JSONObject res = aipNlpClient.wordEmbedding(content, options);
         checkResponseParam(res);
         System.out.println(res.toString(2));
     }

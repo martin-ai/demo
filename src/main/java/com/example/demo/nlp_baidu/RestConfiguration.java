@@ -1,4 +1,4 @@
-package com.example.demo.baidunlp;
+package com.example.demo.nlp_baidu;
 
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;

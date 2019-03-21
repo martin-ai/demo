@@ -1,4 +1,4 @@
-package com.example.demo.baidunlp;
+package com.example.demo.nlp_baidu;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;

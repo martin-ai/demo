@@ -1,4 +1,4 @@
-package com.example.demo.mynlp;
+package com.example.demo.nlp_maya;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mayabot.nlp.segment.MynlpAnalyzer;
