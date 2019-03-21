@@ -151,7 +151,8 @@ public class NormalTest {
 
     @Test
     public void testArithmetic() {
-        System.out.println(SoundexArithmetic.calc("XS"));
+        System.out.println(SoundexArithmetic.calc("May"));
+        System.out.println(SoundexArithmetic.calc("Mertin"));
     }
 
     @Test
