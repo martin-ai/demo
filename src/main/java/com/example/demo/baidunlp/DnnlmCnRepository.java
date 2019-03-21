@@ -1,4 +1,4 @@
-package com.example.demo.Ai;
+package com.example.demo.baidunlp;
 
 import com.example.demo.BasicRepository;
 import org.springframework.stereotype.Repository;

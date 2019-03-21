@@ -1,4 +1,4 @@
-package com.example.demo.Ai;
+package com.example.demo.baidunlp;
 
 import com.alibaba.fastjson.JSON;
 import com.baidu.aip.nlp.AipNlp;

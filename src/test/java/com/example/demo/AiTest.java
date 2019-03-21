@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Ai.AiSimpleService;
+import com.example.demo.baidunlp.AiSimpleService;
 import com.example.demo.mynlp.MyNLPSimpleService;
 import com.google.common.collect.Lists;
 import org.junit.Test;

@@ -1,22 +1,18 @@
-package com.example.demo.Ai;
+package com.example.demo.baidunlp;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
-//DNN语言模型
-public class DnnlmCn {
+public class Keyword {
 
     @Id
     private String logId;
-    private String text;        //文本内容（GBK编码），最大512字节，不需要切词
-    private List<DnnlmCnItem> items;
-    private BigDecimal ppl;     //描述句子通顺的值：数值越低，句子越通顺
+    private List<KeywordItem> items;
     @CreatedDate
     @LastModifiedDate
     Instant timestamp;
@@ -32,19 +28,11 @@ public class DnnlmCn {
         this.logId = logId;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public List<DnnlmCnItem> getItems() {
+    public List<KeywordItem> getItems() {
         return items;
     }
 
-    public void setItems(List<DnnlmCnItem> items) {
+    public void setItems(List<KeywordItem> items) {
         this.items = items;
     }
 
@@ -62,14 +50,6 @@ public class DnnlmCn {
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-
-    public BigDecimal getPpl() {
-        return ppl;
-    }
-
-    public void setPpl(BigDecimal ppl) {
-        this.ppl = ppl;
     }
 
 }
