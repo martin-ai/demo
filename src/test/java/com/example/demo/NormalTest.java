@@ -158,11 +158,8 @@ public class NormalTest {
 
     @Test
     public void testArithmetic2() {
-        TrieTreeArithmetic builder = TrieTreeArithmetic.newBuilder()
-                .addString("美利坚")
-                .addString("中国人民站起来了")
-                .addString("中国共产党");
-        System.out.println(builder.getKeyWordsByPrefix("中国"));
+        TrieTreeArithmetic trieTreeArithmetic = TrieTreeArithmetic.getInstance();
+        System.out.println(trieTreeArithmetic.getKeyWordsByPrefix("共产党"));
     }
 
     @Test

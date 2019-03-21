@@ -34,7 +34,7 @@ public class StopWordDictionary {
     }
 
     private void loadDict() {
-        Thread.currentThread().getContextClassLoader().getResourceAsStream(STOP_DICT);
+//        Thread.currentThread().getContextClassLoader().getResourceAsStream(STOP_DICT);
         InputStream is = this.getClass().getResourceAsStream(STOP_DICT);
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
