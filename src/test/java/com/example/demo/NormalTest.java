@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Arithmetic.SoundexArithmetic;
+import com.example.demo.Arithmetic.TrieTreeArithmetic;
 import com.example.demo.Tools.MyStringUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
@@ -153,6 +154,15 @@ public class NormalTest {
     public void testArithmetic() {
         System.out.println(SoundexArithmetic.calc("May"));
         System.out.println(SoundexArithmetic.calc("Mertin"));
+    }
+
+    @Test
+    public void testArithmetic2() {
+        TrieTreeArithmetic builder = TrieTreeArithmetic.newBuilder()
+                .addString("美利坚")
+                .addString("中国人民站起来了")
+                .addString("中国共产党");
+        System.out.println(builder.getKeyWordsByPrefix("中国"));
     }
 
     @Test
