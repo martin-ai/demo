@@ -35,14 +35,14 @@ public class ThreadPoolUtils {
     static void shutdownAndAwaitTermination(ExecutorService pool) {
         //第一阶段调用 shutdown 拒绝传入任务
         pool.shutdown();
-        //第二阶段等60秒后，任务还没执行完成，就调用 shutdownNow（如有必要）取消所有遗留的任务
+        //第二阶段等5秒后，任务还没执行完成，就调用 shutdownNow（如有必要）取消所有遗留的任务
         try {
             if (!pool.awaitTermination(5, TimeUnit.SECONDS)) {
                 //第一次等待60秒后 任务未完成 尝试shutdownNom
-                System.out.println("第一次等待60秒后 任务未完成 尝试shutdownNom");
+                System.out.println("第一次等待5秒后 任务未完成 尝试shutdownNom");
                 pool.shutdownNow();
                 if (!pool.awaitTermination(5, TimeUnit.SECONDS)) {
-                    System.out.println("第二次等待60秒后任务未完成 报错");
+                    System.out.println("第二次等待5秒后任务未完成 报错");
                     //第二次等待60秒后任务未完成 报错
                     System.err.println("Pool did not terminate");
                 }
