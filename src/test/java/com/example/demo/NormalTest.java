@@ -3,6 +3,7 @@ package com.example.demo;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Arithmetic.SoundexArithmetic;
 import com.example.demo.Arithmetic.TrieTreeArithmetic;
+import com.example.demo.Tools.MyMathsUtils;
 import com.example.demo.Tools.MyStringUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
@@ -167,4 +168,11 @@ public class NormalTest {
         String s = "131313";
         System.out.println(StringUtils.replaceAll(s, "[:digit:]{3}", ""));
     }
+
+    @Test
+    public void testMathsUtils() {
+        int powerNum = MyMathsUtils.findNextPowerNum(7);
+        System.out.println(powerNum);
+    }
+
 }
