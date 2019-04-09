@@ -9,9 +9,13 @@ import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static com.example.demo.Arithmetic.LevenshteinDistance.calcLevenshteinDistance;
 
 public class NormalTest {
 
@@ -170,9 +174,21 @@ public class NormalTest {
     }
 
     @Test
-    public void testMathsUtils() {
-        int powerNum = MyMathsUtils.findNextPowerNum(7);
-        System.out.println(powerNum);
+    public void testMathsUtils() throws NoSuchFieldException, IllegalAccessException {
+        HashMap j = new HashMap();
+        Field field = HashMap.class.getDeclaredField("table");
+//        field.setAccessible(true);
+        System.out.println(j.put("s1", "1"));
+        System.out.println(j.put("s2", "2"));
+        System.out.println(field.get(j));
+//        int powerNum = MyMathsUtils.findNextPowerNum(7);
+//        System.out.println(powerNum);
+    }
+
+    @Test
+    public void testDistance() {
+        float s = calcLevenshteinDistance("jave", "java");
+        System.out.println(s);
     }
 
 }
