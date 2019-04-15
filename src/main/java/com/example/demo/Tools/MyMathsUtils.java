@@ -24,4 +24,18 @@ public class MyMathsUtils {
         return (n < 0) ? 1 : (n >= maxThreshold) ? maxThreshold : n + 1;
     }
 
+    /**
+     * 作用：判断输入的int是否为质数
+     * 解析：质数定义为在大于1的自然数中，除了1和它本身以外不再有其他因数。
+     * 2,3,5,7,...
+     */
+    public static boolean isPrimeNum(int num) {
+        if (num <= 2) return (num == 2);
+        if (num % 2 == 0) return false;
+        for (int i = 3; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
 }

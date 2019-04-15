@@ -14,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static com.example.demo.Tools.MyMathsUtils.isPrimeNum;
+
 public class UtilsTest {
 
     @Test
@@ -102,6 +104,21 @@ public class UtilsTest {
         stopWatch.stop();
 
         System.out.println(stopWatch.prettyPrint());
+    }
+
+    @Test
+    public void testMath() {
+        int sum = 707829217;
+        for (int i = 3; i < Math.sqrt(sum); i++) {
+            if (isPrimeNum(i)) {
+                if (sum % i == 0) {
+                    int s = sum / i;
+                    if (isPrimeNum(s)) {
+                        System.out.println(String.format("%d,%d", i, s));
+                    }
+                }
+            }
+        }
     }
 
 }
